@@ -5,6 +5,9 @@ from rest_framework import status
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.generics import RetrieveAPIView
 from .serializers import UserSerializer
+import logging
+
+logger = logging.getLogger(__name__)
 
 class RegisterView(APIView):
     permission_classes = [AllowAny]
@@ -13,6 +16,7 @@ class RegisterView(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+        logger.error(serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
       
 class LogoutView(APIView):
@@ -22,8 +26,10 @@ class LogoutView(APIView):
             refresh_token = request.data['refresh']
             token = RefreshToken(refresh_token)
             token.blacklist()
+            logger.info(f"User {request.user.username} logged out successfully")
             return Response(status=status.HTTP_205_RESET_CONTENT)
         except Exception as e:
+            logger.error(e)
             return Response(status=status.HTTP_400_BAD_REQUEST)
           
 
