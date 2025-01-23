@@ -40,6 +40,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '192.168.1.18',
+    '192.168.1.31'
     'http://localhost:3000',
     'localhost',
     '192.168.1.250',
