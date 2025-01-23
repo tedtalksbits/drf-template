@@ -51,8 +51,16 @@ ALLOWED_HOSTS = [
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000', 
-    'http://192.168.1.18'
+    'http://192.168.1.18',
+    'http://nexus.blake-fam.fun',
+    'https://nexus.blake-fam.fun',
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://nexus.blake-fam.fun',
+    'http://nexus.blake-fam.fun',
+]
+
 
 # Application definition
 
