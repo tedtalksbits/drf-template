@@ -43,6 +43,7 @@ ALLOWED_HOSTS = [
     '192.168.1.18',
     '192.168.1.31',
     'http://localhost:3000',
+    "nexus.blake-fam.fun",
     'localhost',
     '192.168.1.250',
     '127.0.0.1'
